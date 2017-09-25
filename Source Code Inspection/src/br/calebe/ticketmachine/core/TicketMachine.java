@@ -22,7 +22,8 @@ public class TicketMachine {
     public void inserir(int quantia) throws PapelMoedaInvalidaException {
         boolean achou = false;
         for (int i = 0; i < papelMoeda.length && !achou; i++) {
-            if (papelMoeda[1] == quantia) {
+            if (papelMoeda[i] == quantia){
+            
                 achou = true;
             }
         }
@@ -37,16 +38,17 @@ public class TicketMachine {
     }
 
     public Iterator<Integer> getTroco() {
-        return null;
+        return new Troco(saldo-valor).getIterator();
     }
 
     public String imprimir() throws SaldoInsuficienteException {
         if (saldo < valor) {
             throw new SaldoInsuficienteException();
         }
-        String result = "*****************\n";
+        saldo -= valor; 
+        String result = "***********\n"; 
         result += "*** R$ " + saldo + ",00 ****\n";
-        result += "*****************\n";
+        result += "*********\n";
         return result;
     }
 }
