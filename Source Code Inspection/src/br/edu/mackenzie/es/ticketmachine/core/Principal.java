@@ -32,9 +32,25 @@ public class Principal {
                    }
                    break;
                case 2:
+                   Ticket ticket = new Ticket(3);
+                   
+                   if (ticket.getPreco() > TicketMachine.getSaldo()) {
+                        Tela.exibeMensagem("Saldo insuficiente");
+                    } else {
+                        Tela.imprimir(ticket.getPreco());
+                        TicketMachine.saque(ticket.getPreco());
+                    }
+
                    break;
                case 3:
                    Tela.exibeMensagem(" O saldo é " + TicketMachine.getSaldo());
+                   break;
+               case 4:
+                   if (TicketMachine.getSaldo() == 0){
+                       Tela.exibeMensagem("Não há troco!");
+                   }else{
+                       Tela.exibeMensagem("O valor do troco é" + TicketMachine.getSaldo());
+                   }
                    break;
                default:
                    Tela.erroMenu();
@@ -44,6 +60,5 @@ public class Principal {
        }while(opcao != 0);
        
        Tela.opcaoSair();
-        
     }
 }
