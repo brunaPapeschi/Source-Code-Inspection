@@ -5,10 +5,20 @@
  */
 package br.edu.mackenzie.es.ticketmachine.core;
 
-/**
- *
- * @author Vmix
- */
 public class Ticket {
+    private float preco;
+    
+    public Ticket(float preco){
+        this.preco = preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
+
+    public float getPreco() {
+        return preco;
+    }
+    
     
 }
